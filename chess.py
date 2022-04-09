@@ -20,7 +20,9 @@ class Chess:
 
     def move(self):
         """Déplace une pièce"""
-        pass
+        cos = input("Entrez les coordonnées de la pièce a bouger et de sa destination sous cette forme: cos1/cos2" 
+                    "(exemple: a1/a2")
+
 
     def ask(self):
         """Demande au joueur l'action qu'il veut effectuer"""
