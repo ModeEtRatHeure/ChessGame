@@ -47,8 +47,13 @@ class Board:
 
     def move_piece(self, piece_address, cos):
         piece = None
+        coordinates2 = self.convert(cos)
+        coordinates1 = []
         for i in self.board:
             for j in i:
-                if j.__repr__() == piece_address:
+                if id(j) == piece_address:
                     piece = j
-        #if
+                    coordinates1 = [self.board.index(i), self.board[self.board.index(i)].index(j)]
+        if piece:
+            self.board[coordinates2[1]][coordinates2[0]] = piece
+            self.board[coordinates1[0]][coordinates1[1]] = "  "

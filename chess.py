@@ -22,7 +22,11 @@ class Chess:
         """Déplace une pièce"""
         cos = input("Entrez les coordonnées de la pièce a bouger et de sa destination sous cette forme: cos1/cos2" 
                     "(exemple: a1/a2")
-
+        piece = self.board.get_piece(cos[:2])
+        if self.board.is_empty(cos[-2:]):
+            self.board.move_piece(id(piece), cos[-2:])
+        else:
+            self.eat()
 
     def ask(self):
         """Demande au joueur l'action qu'il veut effectuer"""
