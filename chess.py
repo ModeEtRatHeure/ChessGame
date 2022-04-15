@@ -14,19 +14,14 @@ class Chess:
         """Roque"""
         pass
 
-    def eat(self):
-        """Mange une pièce"""
-        pass
-
-    def move(self):
+    def move(self, ask, cos=""):
         """Déplace une pièce"""
-        cos = input("Entrez les coordonnées de la pièce a bouger et de sa destination sous cette forme: cos1/cos2" 
-                    "(exemple: a1/a2")
+        cos = cos
+        if ask:
+            cos = input("Entrez les coordonnées de la pièce a bouger et de sa destination sous cette forme: cos1/cos2" 
+                        "(exemple: a1/a2")
         piece = self.board.get_piece(cos[:2])
-        if self.board.is_empty(cos[-2:]):
-            self.board.move_piece(id(piece), cos[-2:])
-        else:
-            self.eat()
+        self.board.move_piece(id(piece), cos[-2:])
 
     def ask(self):
         """Demande au joueur l'action qu'il veut effectuer"""
@@ -41,10 +36,8 @@ class Chess:
 
     def verify_input(self):
         """Determine l'action a réaliser"""
-        if self.tour.lower() == "m":
-            self.move()
-        elif self.tour.lower() == "e":
-            self.eat()
+        if self.tour.lower() == "m" or self.tour.lower() == "e":
+            self.move(True)
         elif self.tour.lower() == "c":
             self.castle()
         else:

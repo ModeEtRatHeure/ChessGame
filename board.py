@@ -46,6 +46,7 @@ class Board:
 
 
     def move_piece(self, piece_address, cos):
+        """Déplace la pièce passée en paramètres"""
         piece = None
         coordinates2 = self.convert(cos)
         coordinates1 = []
